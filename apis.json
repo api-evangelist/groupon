@@ -1,0 +1,80 @@
+{
+    "name": "Groupon",
+    "description": "<p>Register for a Groupon API key (client_id) to develop your own Groupon applications. Now, you can put all those great ideas for Groupon improvements, extensions, and multiple-platform interfaces to work.<\/p>",
+    "image": "http:\/\/upload.wikimedia.org\/wikipedia\/commons\/thumb\/c\/cc\/Groupon_logo.png\/320px-Groupon_logo.png",
+    "tags": [
+        "api provider",
+        "coupons",
+        "general data",
+        "have api",
+        "relative data",
+        "service api"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/groupon\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Groupon API2",
+            "description": null,
+            "image": "http:\/\/upload.wikimedia.org\/wikipedia\/commons\/thumb\/c\/cc\/Groupon_logo.png\/320px-Groupon_logo.png",
+            "humanURL": "http:\/\/groupon.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/groupon-api2.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/groupon-api2-postman-collection.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "API.json - Authoritative",
+            "url": "http:\/\/apis.io\/apisdef\/legacy\/groupon.json"
+        },
+        {
+            "type": "Affiliates",
+            "url": "https:\/\/sites.google.com\/site\/grouponapiv2\/api-usage\/commission-junction-link-guide"
+        },
+        {
+            "type": "Branding",
+            "url": "http:\/\/www.groupon.com\/pages\/api-branding-requirements"
+        },
+        {
+            "type": "Developers",
+            "url": "http:\/\/www.groupon.com\/pages\/api"
+        },
+        {
+            "type": "Error Codes",
+            "url": "https:\/\/sites.google.com\/site\/grouponapiv2\/error-reporting"
+        },
+        {
+            "type": "Forums",
+            "url": "http:\/\/groups.google.com\/group\/grouponapi?hl=en"
+        },
+        {
+            "type": "Registration",
+            "url": "https:\/\/www.groupon.com\/session\/new"
+        },
+        {
+            "type": "Terms Of Service",
+            "url": "http:\/\/www.groupon.com\/pages\/api-terms-of-use"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/www.groupon.com\/"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/groupon.com"
+        }
+    ]
+}
