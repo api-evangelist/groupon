@@ -1,0 +1,8 @@
+---
+title: One or Two Acupuncture Treatments at HealthSource (Up to 66% Off)
+url: http://groupon.com/chicago/deals/healthsource-of-willowbrook-1
+date: '2015-05-06'
+author: ''
+feed_url: http://www.groupon.com/feed
+---
+Choose Between Two Options $29 for one acupuncture treatment ($80 value) $55 for two acupuncture treatments ($160 value) As practiced in ancient Chinese Medicine, acupuncture rebalances the flow of energy through the body. Whether being practiced in its traditional or western forms, acupuncture uses fine needles to target the body’s 12 meridians and redistribute energy. Patients look to these treatments for relief from pain and allergies, to stimulate weight loss, or even to cope with stress and its related symptoms. HealthSource Dr. Zhu has spent the last 30 years working in the field of traditional Chinese medicine, treating patients, researching methodologies, and teaching her holistic healing skills at hospitals around the world. The term “expert” almost doesn’t cover it for Dr. Zhu whose impressive credentials include an MD from Gansu College of Traditional Chinese Medicine, TCM teaching positions in Sweden and Israel, and position as chair of the Traditional Chinese Medicine department at the Atlantic University of Chinese Medicine in Asheville, North Carolina. At HealthSource, she wields her expertise in the form of acupuncture, herbal remedies, therapeutic massage, and energy work. During acupuncture treatments, Dr. Zhu inserts thin, sterile needles into certain points along the body known as meridians in order to redirect energy flow. The traditional treatment dates back centuries and can be used to address a wide array of physical and mental ailments. Groupon Says
