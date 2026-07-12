@@ -6,6 +6,8 @@ url:
 modified: '2026-03-24'
 apis: []
 common:
+  - type: DomainSecurity
+    url: security/groupon-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/groupon
   - type: LinkedIn
