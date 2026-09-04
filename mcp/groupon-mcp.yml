@@ -1,0 +1,56 @@
+generated: '2026-09-04'
+method: searched
+status: none
+source: >-
+  Live endpoint probes plus an npm registry search, 2026-09-04. No provider-operated
+  MCP server exists.
+description: >-
+  Groupon operates no MCP server. Candidate remote endpoints were probed and none
+  answered: mcp.groupon.com does not resolve, https://www.groupon.com/mcp returns
+  the site-wide Cloudflare bot challenge (403), and https://api.groupon.com/mcp
+  returns the gateway's standard 401 client_id envelope — the same response every
+  non-existent path on that host returns, so it is NOT evidence of an MCP surface.
+  npm carries a package named `groupon-mcp`, but it is third-party
+  (github.com/chrischall/groupon-mcp, self-described as "developed and maintained
+  by AI") and is NOT published by Groupon, so no MCPServer pointer is emitted from
+  it. No candidate tool list is derived either: there is no readable OpenAPI to
+  derive one from, and inventing tools for an API whose operations we cannot see
+  would be fabrication.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: probed
+server: null
+tools: []
+probes:
+  - url: https://mcp.groupon.com/mcp
+    method: 'POST tools/list'
+    http_status: 0
+    result: Host does not resolve.
+    fetched: '2026-09-04'
+  - url: https://www.groupon.com/mcp
+    method: 'POST tools/list'
+    http_status: 403
+    result: Cloudflare managed bot challenge, identical to every other path on the host.
+    fetched: '2026-09-04'
+  - url: https://api.groupon.com/mcp
+    method: 'POST tools/list'
+    http_status: 401
+    result: >-
+      {"error":{"httpCode":401,"message":"'client_id' is invalid"}} — the gateway's
+      catch-all response for every path, existent or not. Not an MCP surface.
+    fetched: '2026-09-04'
+third_party:
+  - name: groupon-mcp
+    registry: npm
+    url: https://www.npmjs.com/package/groupon-mcp
+    version: 0.2.0
+    published: '2026-08-29'
+    source: https://github.com/chrischall/groupon-mcp
+    official: false
+    note: >-
+      Not authored or endorsed by Groupon. Recorded so a later run does not mistake
+      it for a first-party server.

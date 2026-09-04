@@ -1,0 +1,36 @@
+generated: '2026-09-04'
+method: probed
+source: https://api.groupon.com/ (response headers observed 2026-09-04)
+provider: Groupon
+providerId: groupon
+limit_count: 0
+description: >-
+  Groupon documents no API rate limits that a machine can read, and the live
+  gateway advertises none. A full response-header capture from
+  https://api.groupon.com/v2/deals.json on 2026-09-04 returned no X-RateLimit-*,
+  no RateLimit-* (RFC 9331 style), no Retry-After and no quota header of any kind.
+  The developer portal that might state limits in prose
+  (www.groupon.com/developers/docs) answers HTTP 403 to every automated client
+  behind a Cloudflare managed bot challenge, so it could not be read. An agent
+  integrating with this API has no runtime throttling signal to act on. Recorded
+  as an honest zero, not an omission.
+limits: []
+headers:
+  observed: []
+  requestId: x-request-id
+  note: >-
+    The gateway does return a request-correlation header (x-request-id, mirrored as
+    x-original-request-id) usable for support escalation, plus x-brand: groupon and
+    x-envoy-upstream-service-time. None of these is a rate-limit signal.
+responseCodes:
+  throttled: null
+  note: The 429 shape is unobserved; every anonymous request is short-circuited at 401.
+evidence:
+  - url: https://api.groupon.com/v2/deals.json
+    http_status: 401
+    fetched: '2026-09-04'
+    note: Full header capture; no rate-limit header present.
+  - url: https://www.groupon.com/developers/docs
+    http_status: 403
+    fetched: '2026-09-04'
+    note: 'Cloudflare managed bot challenge ("Just a moment..."); response header cf-mitigated: challenge.'

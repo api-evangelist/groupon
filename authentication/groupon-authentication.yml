@@ -1,0 +1,71 @@
+generated: '2026-09-04'
+method: probed
+source: https://api.groupon.com/ (live 401 probe, 2026-09-04)
+description: >-
+  Groupon publishes no anonymously-readable OpenAPI, so this profile is derived
+  from what the live gateway itself says. Every path on api.groupon.com — the
+  root, /v2/*, /graphql, /mcp, /.well-known/* — returns the identical response
+  {"error":{"httpCode":401,"message":"'client_id' is invalid"}}. The gateway
+  therefore names its own credential: a client_id. No WWW-Authenticate header is
+  returned, no OAuth or OpenID discovery document is served on any Groupon host,
+  and no bearer-token challenge is issued, so this is a plain API-key scheme, not
+  OAuth. Nothing about scopes, key issuance or rotation could be read: the
+  developer portal that would document it (www.groupon.com/developers) is behind a
+  Cloudflare managed bot challenge that returns 403 to every automated client,
+  including the Internet Archive.
+schemes:
+  - id: groupon_client_id
+    type: apiKey
+    in: query
+    name: client_id
+    host: api.groupon.com
+    description: >-
+      Client identifier required on every request to the Groupon API gateway.
+      Established by probe, not by documentation: the gateway rejects requests
+      with the message "'client_id' is invalid" and accepts nothing anonymously.
+    evidence:
+      - url: https://api.groupon.com/v2/deals.json
+        http_status: 401
+        body: '{"error":{"httpCode":401,"message":"''client_id'' is invalid"}}'
+        fetched: '2026-09-04'
+      - url: https://api.groupon.com/v2/deals.json?client_id=test
+        http_status: 401
+        note: An arbitrary client_id is rejected, confirming the value is validated server-side.
+        fetched: '2026-09-04'
+  - id: groupon_partner_client_id
+    type: apiKey
+    in: query
+    name: clientId
+    host: partner-api.groupon.com
+    status: retired
+    description: >-
+      The Groupon Partner Network reporting APIs (Order, Deal, Division,
+      Transaction, Taxonomy, Campaign, Ledger) took a clientId query parameter
+      issued from the GPN Account Profile page. RECORDED FOR HISTORY ONLY:
+      partner-api.groupon.com now returns Cloudflare 522 (origin unreachable) and
+      the Groupon Partner Network was permanently closed on 2022-06-15.
+    evidence:
+      - url: https://partner-api.groupon.com/
+        http_status: 522
+        fetched: '2026-09-04'
+      - url: https://strackr.com/docs/groupon
+        note: >-
+          Third-party affiliate-platform documentation, quoted: "Groupon Partner
+          Network permanently closed on June 15, 2022, Groupon is now available on
+          CJ Affiliate." Names the API Key / Authentication token from the GPN
+          Account Profile section. Cited because Groupon's own GPN help pages are
+          no longer served.
+        fetched: '2026-09-04'
+oauth2: false
+openid_connect: false
+mutual_tls: false
+notes:
+  - >-
+    No /.well-known/openid-configuration or /.well-known/oauth-authorization-server
+    exists on any Groupon host — all probed 404 (www/apex) or 401 (api gateway) on
+    2026-09-04.
+  - >-
+    The Groupon Developer Platform 2.0 integrations (Bookable Appointments, Tours
+    and Attractions) are contracts Groupon CONSUMES: Groupon polls and calls the
+    partner's own endpoints. Their authentication is therefore configured per
+    partner and is not a Groupon-hosted scheme.

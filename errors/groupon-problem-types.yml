@@ -1,0 +1,56 @@
+generated: '2026-09-04'
+method: probed
+source: https://api.groupon.com/ (live responses observed 2026-09-04)
+format: custom
+rfc9457: false
+description: >-
+  Groupon publishes no anonymously-readable OpenAPI, so this catalog records only
+  error responses OBSERVED on the live gateway. api.groupon.com returns a
+  consistent JSON envelope with a single top-level "error" object carrying an
+  integer httpCode and a human message. It is NOT RFC 9457 / RFC 7807: the
+  content-type is application/json, not application/problem+json, and there is no
+  type, title, detail, status or instance member. Only the 401 shape could be
+  observed anonymously; every path returns it, so no 4xx other than 401 and no 5xx
+  is reachable without a credential. NOTHING BELOW IS INFERRED — no error codes,
+  titles or remediation have been invented to fill the catalog.
+envelope:
+  shape: '{"error": {"httpCode": <int>, "message": <string>}}'
+  media_type: application/json; charset=utf-8
+  fields:
+    - name: error.httpCode
+      type: integer
+      note: Mirrors the HTTP status code.
+    - name: error.message
+      type: string
+      note: Human-readable message. Not a stable machine code — no error identifier is returned.
+  machine_code: false
+  note: >-
+    The envelope carries no stable symbolic error code, only prose in
+    error.message. An agent cannot branch on this reliably.
+problem_types:
+  - status: 401
+    code: null
+    title: client_id is invalid
+    observed_body: '{"error":{"httpCode":401,"message":"''client_id'' is invalid"}}'
+    remediation: >-
+      Supply a valid client_id issued by Groupon. Returned for every path on the
+      gateway when the credential is absent or unrecognized, including paths that
+      do not exist — so a 401 here does NOT confirm the path exists.
+    evidence:
+      - url: https://api.groupon.com/
+        http_status: 401
+        fetched: '2026-09-04'
+      - url: https://api.groupon.com/v2/deals.json
+        http_status: 401
+        fetched: '2026-09-04'
+      - url: https://api.groupon.com/v2/divisions.json
+        http_status: 401
+        fetched: '2026-09-04'
+gaps:
+  - >-
+    No published error reference could be read. www.groupon.com/developers/docs and
+    /developers/api-reference both return HTTP 403 from a Cloudflare managed bot
+    challenge to every automated client.
+  - >-
+    404, 429 and 5xx shapes are unobserved: the gateway short-circuits every
+    anonymous request at 401.

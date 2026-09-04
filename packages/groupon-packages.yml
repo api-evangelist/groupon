@@ -1,0 +1,133 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  registry.npmjs.org, pypi.org, rubygems.org search + metadata endpoints, and
+  github.com/groupon — all queried 2026-09-04.
+description: >-
+  GROUPON SHIPS NO FIRST-PARTY API CLIENT LIBRARY. Every registry was searched and
+  every candidate resolved. npm, PyPI and RubyGems carry Groupon API wrappers, but
+  all of them are third-party, all target the retired v2 deals API, and the newest
+  of them was published in 2015. Groupon's own npm organisation is real and
+  active-ish, but it publishes internal engineering tooling (ESLint/CoffeeLint
+  configs, a service client framework, a release manager, a cache) — none of it is
+  a client for a Groupon API, so NO `SDKs` pointer is emitted from this file. The
+  first-party column is genuinely empty, and that is the finding.
+official_sdk_count: 0
+packages: []
+first_party_open_source:
+  note: >-
+    Published by the github.com/groupon organisation and the `groupon` npm scope.
+    Recorded because it is real first-party engineering output, but it is
+    general-purpose tooling, NOT an API client, and it is not counted as an SDK.
+    Note also that github.com/groupon currently reports public_repos: 0 — the
+    organisation page is live (HTTP 200) but every repository these packages point
+    at is no longer publicly served, so their source links are dangling.
+  entries:
+    - language: javascript
+      registry: npm
+      name: eslint-config-groupon
+      url: https://www.npmjs.com/package/eslint-config-groupon
+      version: 11.1.0
+      published: '2022-04-01'
+      official: true
+      sdk: false
+      note: ESLint configuration used by Groupon. Not an API client.
+    - language: javascript
+      registry: npm
+      name: gofer
+      url: https://www.npmjs.com/package/gofer
+      version: 5.3.0
+      published: '2024-02-12'
+      official: true
+      sdk: false
+      note: >-
+        General-purpose HTTP service client framework. The most recently published
+        first-party package found, and the only one released in the last three
+        years. Not a Groupon API client.
+    - language: javascript
+      registry: npm
+      name: nlm
+      url: https://www.npmjs.com/package/nlm
+      version: 5.8.0
+      published: '2021-10-29'
+      official: true
+      sdk: false
+      note: Lifecycle manager for node projects. Not an API client.
+    - language: javascript
+      registry: npm
+      name: cson-parser
+      url: https://www.npmjs.com/package/cson-parser
+      version: 4.0.9
+      published: '2021-03-26'
+      official: true
+      sdk: false
+    - language: javascript
+      registry: npm
+      name: cached
+      url: https://www.npmjs.com/package/cached
+      version: 6.1.0
+      published: '2021-06-29'
+      official: true
+      sdk: false
+third_party_wrappers:
+  note: >-
+    Recorded as an abandonment signal, not as SDKs. Every one of these wraps the
+    Groupon v2 deals API, which is now gated behind an unobtainable client_id, and
+    none has been touched in over a decade. No pointer is emitted for any of them.
+  entries:
+    - language: javascript
+      registry: npm
+      name: groupon
+      url: https://www.npmjs.com/package/groupon
+      version: 0.0.4
+      published: '2011-08-12'
+      official: false
+      source: https://github.com/lalitkapoor/node-groupon-api
+    - language: javascript
+      registry: npm
+      name: angular-groupon
+      url: https://www.npmjs.com/package/angular-groupon
+      version: 0.1.6
+      published: '2014-01-11'
+      official: false
+    - language: javascript
+      registry: npm
+      name: '@datafire/groupon'
+      url: https://www.npmjs.com/package/@datafire/groupon
+      version: 5.0.0
+      published: '2020-12-21'
+      official: false
+      note: DataFire integration bundle, machine-generated; not authored by Groupon.
+    - language: ruby
+      registry: rubygems
+      name: groupon
+      url: https://rubygems.org/gems/groupon
+      version: 1.0.1
+      published: '2013-04-04'
+      official: false
+    - language: ruby
+      registry: rubygems
+      name: groupon_api
+      url: https://rubygems.org/gems/groupon_api
+      version: 0.2.1
+      published: '2015-06-07'
+      official: false
+    - language: ruby
+      registry: rubygems
+      name: groupon2
+      url: https://rubygems.org/gems/groupon2
+      version: 0.0.1
+      published: '2011-03-29'
+      official: false
+negative_results:
+  - registry: pypi
+    queried:
+      - groupon
+      - groupon-api
+      - python-groupon
+    result: 404 for every candidate — no Groupon package on PyPI, first-party or otherwise.
+    fetched: '2026-09-04'
+  - registry: github
+    queried: https://api.github.com/orgs/groupon/repos
+    result: 'org resolves (public_repos: 0); no public repositories, so no SDK source to harvest.'
+    fetched: '2026-09-04'

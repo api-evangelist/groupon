@@ -1,0 +1,95 @@
+generated: '2026-09-04'
+method: probed
+source: >-
+  https://api.groupon.com/ live response headers and bodies (2026-09-04); the
+  developer portal could not be read (HTTP 403, Cloudflare managed bot challenge).
+description: >-
+  Cross-cutting runtime semantics for the Groupon API, established by probing the
+  live gateway. Groupon publishes no anonymously-readable OpenAPI and its
+  developer documentation is behind a bot challenge, so most dimensions below are
+  honestly recorded as unknown rather than assumed. Everything marked with
+  evidence was observed on the wire.
+auth:
+  style: api-key
+  parameter: client_id
+  location: query
+  detail: authentication/groupon-authentication.yml
+idempotency:
+  coverage: none
+  supported: false
+  header: null
+  scope: []
+  retention: null
+  note: >-
+    No idempotency mechanism could be established. The gateway advertises no
+    Idempotency-Key or equivalent header, returns no idempotency-related hint on
+    any anonymous response, and the documentation that would state one is
+    unreadable to any machine client. Recorded as `none` — the honest reading of
+    "no replay protection is discoverable" — not as `partial`. If Groupon
+    documents an idempotency key on a write operation, this artifact should be
+    upgraded to searched and the coverage restated.
+reversibility:
+  state: unknown
+  grade: null
+  note: >-
+    Not determinable. No write surface is reachable anonymously (every path
+    returns 401) and the reference that would name cancel/refund/void operations
+    and their windows is behind a bot challenge. Groupon obviously operates
+    reversal flows as a business — the Groupon Promise refund policy is published
+    at https://www.groupon.com/legal/grouponpromise — but that is a consumer
+    policy page, NOT an API reversal operation with a stated window, and asserting
+    an API window from it would be an invention. Deliberately left unstated: an
+    invented reversal window is the one error here that could cost a user money.
+    This is not `na` — Groupon's booking and reservation APIs certainly have write
+    operations (Create Reservation, Create Booking, Cancellation are named in the
+    indexed documentation titles); their reversibility is simply unreadable.
+  write_surface_exists: true
+  reversal_operations: []
+pagination:
+  style: unknown
+  note: Unreadable — no spec, no readable reference.
+field_expansion:
+  supported: unknown
+metadata:
+  supported: unknown
+request_id_tracing:
+  supported: true
+  headers:
+    - x-request-id
+    - x-original-request-id
+    - x-external-request-id
+  note: >-
+    Every gateway response, including the anonymous 401, carries a UUID
+    x-request-id mirrored as x-original-request-id. Usable for support escalation.
+  evidence:
+    - url: https://api.groupon.com/v2/deals.json
+      http_status: 401
+      observed: 'x-request-id: 8db4fce0-641a-4bd6-a3e7-5aa95d85d331'
+      fetched: '2026-09-04'
+versioning:
+  style: path
+  note: >-
+    Legacy Groupon API paths are version-prefixed (/v2/...). The gateway accepts
+    the prefix but rejects anonymously, so the live version set could not be
+    enumerated. No published versioning policy was found.
+error_envelope:
+  shape: '{"error": {"httpCode": <int>, "message": <string>}}'
+  rfc9457: false
+  detail: errors/groupon-problem-types.yml
+rate_limit_signalling:
+  supported: false
+  note: No rate-limit response header of any family observed. See rate-limits/groupon-rate-limits.yml.
+infrastructure_observed:
+  note: >-
+    Recorded because it is the only structural fact the gateway volunteers about
+    itself. Not a convention a consumer should depend on.
+  headers:
+    - 'x-brand: groupon'
+    - 'x-envoy-upstream-service-time'
+    - 'x-response-served-from: api-proxy--public--us-central1--default--conveyor-gcp-production2'
+    - 'x-request-originated-from: envoy-tls-side-car--ingress-https'
+cross_links:
+  - errors/groupon-problem-types.yml
+  - lifecycle/groupon-lifecycle.yml
+  - authentication/groupon-authentication.yml
+  - rate-limits/groupon-rate-limits.yml

@@ -1,0 +1,88 @@
+generated: '2026-09-04'
+method: searched
+source: >-
+  Live host probes 2026-09-04 plus third-party affiliate documentation for the
+  retired Groupon Partner Network.
+description: >-
+  Groupon publishes no versioning policy, no deprecation policy, no Sunset /
+  Deprecation header contract (RFC 8594), no SLA and no status page that could be
+  found. What it HAS done is retire a whole API programme, and that is the one
+  hard lifecycle fact on record here.
+status_page:
+  published: false
+  probed:
+    - url: https://status.groupon.com/
+      http_status: 0
+      note: Host does not resolve to a reachable service.
+      fetched: '2026-09-04'
+  note: No status or uptime page was found on any Groupon host.
+deprecation_policy:
+  published: false
+  note: >-
+    No deprecation or sunset policy document was found. Deliberately NOT claimed:
+    the retirement recorded below is a single observed event, not a published
+    policy, and no Deprecation pointer is emitted from it.
+sunset_headers:
+  rfc8594: false
+  observed: []
+  note: No Sunset or Deprecation header on any observed response.
+sla:
+  published: false
+versioning:
+  scheme: path
+  note: Legacy paths are /v2/-prefixed; no published version policy.
+retirements:
+  - name: Groupon Partner Network (GPN) reporting APIs
+    host: partner-api.groupon.com
+    apis:
+      - Order API
+      - Deal API
+      - Division API
+      - Transaction API
+      - Taxonomy API
+      - Campaign API
+      - Ledger API
+      - Attribution Validation
+    status: retired
+    retired_on: '2022-06-15'
+    successor: >-
+      Groupon affiliate distribution moved to CJ Affiliate; there is no
+      Groupon-hosted replacement for these reporting endpoints.
+    evidence:
+      - url: https://partner-api.groupon.com/
+        http_status: 522
+        fetched: '2026-09-04'
+        note: >-
+          Cloudflare 522, origin unreachable. The DNS record still resolves
+          (104.18.12.36 / 104.18.13.36) and the edge still answers, so the
+          hostname is live while the service behind it is gone — a dangling
+          surface, not a clean shutdown.
+      - url: https://partner-api.groupon.com/help/reporting-version-2-order-api
+        http_status: 522
+        fetched: '2026-09-04'
+      - url: https://strackr.com/docs/groupon
+        http_status: 200
+        fetched: '2026-09-04'
+        note: >-
+          Third-party affiliate-platform documentation, quoted verbatim: "Groupon
+          Partner Network permanently closed on June 15, 2022, Groupon is now
+          available on CJ Affiliate." Cited because Groupon's own GPN help pages
+          are no longer served and no first-party retirement notice could be
+          reached.
+        first_party: false
+current_surfaces:
+  - name: Groupon API gateway
+    host: api.groupon.com
+    status: live-gated
+    evidence:
+      url: https://api.groupon.com/v2/deals.json
+      http_status: 401
+      fetched: '2026-09-04'
+  - name: Groupon Developer Platform 2.0 (partner integrations)
+    host: www.groupon.com/developers
+    status: live-unreadable
+    evidence:
+      url: https://www.groupon.com/developers
+      http_status: 403
+      fetched: '2026-09-04'
+      note: Cloudflare managed bot challenge; page is served to browsers, not to machines.

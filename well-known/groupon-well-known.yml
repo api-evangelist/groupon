@@ -1,0 +1,164 @@
+generated: '2026-09-04'
+method: probed
+source: live HTTP probes of every host this record knows, 2026-09-04
+description: >-
+  Probe of the /.well-known/ discovery surface across every Groupon host in this
+  record: the registrable domain and www, the live API gateway host
+  (api.groupon.com), the retired partner-network host (partner-api.groupon.com),
+  and the corporate/privacy/investor hosts. NOTHING WAS FOUND. groupon.com and
+  www.groupon.com return a real 404 for every path. api.groupon.com answers every
+  path — /.well-known/ included — with the same gateway 401
+  {"error":{"httpCode":401,"message":"'client_id' is invalid"}}, so no discovery
+  document is reachable anonymously there. partner-api.groupon.com is unreachable
+  (Cloudflare 522, origin down). privacy.groupon.com and investor.groupon.com are
+  SPA/edge catch-alls that answer 200 with an HTML shell or the literal string
+  "Invalid key" for EVERY /.well-known/ path — those are recorded as
+  present-but-not-a-real-document and are NOT documents. No WellKnown or
+  SecurityTxt pointer is emitted from this probe, because no path returned a real
+  document.
+hosts:
+  - host: https://www.groupon.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://groupon.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://api.groupon.com
+    note: >-
+      Every path on this host, including all /.well-known/ paths, returns HTTP 401
+      with the gateway error envelope. The surface is auth-gated, not absent.
+    documents:
+      - path: /.well-known/security.txt
+        status: 401
+      - path: /.well-known/openid-configuration
+        status: 401
+      - path: /.well-known/oauth-authorization-server
+        status: 401
+      - path: /.well-known/api-catalog
+        status: 401
+      - path: /.well-known/ai-plugin.json
+        status: 401
+      - path: /.well-known/agent-card.json
+        status: 401
+      - path: /.well-known/agent.json
+        status: 401
+  - host: https://partner-api.groupon.com
+    note: Cloudflare 522 — origin unreachable. Groupon Partner Network closed 2022-06-15.
+    documents:
+      - path: /.well-known/security.txt
+        status: 0
+      - path: /.well-known/openid-configuration
+        status: 0
+      - path: /.well-known/oauth-authorization-server
+        status: 0
+      - path: /.well-known/api-catalog
+        status: 0
+      - path: /.well-known/ai-plugin.json
+        status: 0
+  - host: https://about.groupon.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 403
+      - path: /.well-known/oauth-authorization-server
+        status: 403
+      - path: /.well-known/api-catalog
+        status: 403
+      - path: /.well-known/ai-plugin.json
+        status: 403
+  - host: https://privacy.groupon.com
+    note: >-
+      SPA catch-all. Returns 200 with an identical text/html shell for every
+      /.well-known/ path — a false positive, not a document. Nothing saved.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        type: text/html
+        document: false
+      - path: /.well-known/openid-configuration
+        status: 200
+        type: text/html
+        document: false
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        type: text/html
+        document: false
+      - path: /.well-known/api-catalog
+        status: 200
+        type: text/html
+        document: false
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        type: text/html
+        document: false
+  - host: https://investor.groupon.com
+    note: >-
+      Edge catch-all. Returns 200 with the literal body "Invalid key" for every
+      /.well-known/ path — a false positive, not a document. Nothing saved.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        document: false
+      - path: /.well-known/openid-configuration
+        status: 200
+        document: false
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        document: false
+      - path: /.well-known/api-catalog
+        status: 200
+        document: false
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        document: false
+content_signals:
+  found: true
+  file: groupon-robots.txt
+  source: https://www.groupon.com/robots.txt
+  status: 200
+  fetched: '2026-09-04'
+  note: >-
+    Groupon serves a Cloudflare-managed Content Signals policy in robots.txt. This
+    is the only machine-readable AI-consent artifact the company publishes; there
+    is no security.txt, no ai-plugin.json and no api-catalog anywhere on the estate.
+  directives:
+    - user_agent: '*'
+      content_signal: search=yes,ai-train=no
+      allow: /
+  disallowed_agents:
+    - Amazonbot
+    - Applebot-Extended
+    - Bytespider
+    - CCBot
+    - ClaudeBot
+    - CloudflareBrowserRenderingCrawler
+    - Google-Extended
+    - GPTBot
+    - meta-externalagent
+  reservation_of_rights: >-
+    "ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF
+    RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790" — quoted
+    verbatim from the served robots.txt.

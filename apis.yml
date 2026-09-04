@@ -1,4 +1,40 @@
+name: Groupon
 aid: groupon
+specificationVersion: '0.23'
+kind: contract
+access: 3rd-Party
+position: Consuming
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/groupon.png
+created: '2026-03-24'
+modified: '2026-09-04'
+url: https://raw.githubusercontent.com/api-evangelist/groupon/refs/heads/main/apis.yml
+description: >-
+  Groupon is a local-commerce marketplace, founded in Chicago in 2008, where people
+  discover and book discounted experiences, services, goods and travel — things to
+  do, food and drink, beauty and spas, health and fitness, home and auto services,
+  retail goods, getaways and retailer coupons. Its developer surface is a partner
+  and merchant integration programme rather than a public product API: the Groupon
+  Developer Platform publishes REST contracts for Bookable Appointments, Tours and
+  Attractions, Goods Marketplace inventory and point-of-sale redemption, which
+  partner booking and reservation systems implement so Groupon can poll availability,
+  create reservations and signal redemptions. A separate Groupon-operated API gateway
+  runs at api.groupon.com and requires a client_id on every request. The Groupon
+  Partner Network affiliate reporting APIs were permanently closed on 2022-06-15.
+tags:
+  - Fortune 1000
+  - Local Commerce
+  - Marketplace
+  - E-Commerce
+  - Deals
+  - Bookings
+  - Reservations
+  - Travel
+  - Retail
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+  - FN: APIs.json
+    email: info@apis.io
 deliveryModel:
   model: unknown
   open_source: false
@@ -7,37 +43,138 @@ deliveryModel:
   label: Delivery model not determined — needs a product licence on record
   confidence: low
   source:
-  - none
+    - none
   generated: '2026-08-28'
   method: derived
-specificationVersion: '0.23'
 accessModel:
-  pricing: unknown
-  onboarding: unknown
+  pricing: none-published
+  onboarding: partner-signup
   trial: false
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
-  method: derived
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/groupon.png
-tags:
-  - Fortune 1000
-url: 
-  https://raw.githubusercontent.com/api-evangelist/groupon/refs/heads/main/apis.yml
-modified: '2026-03-24'
-apis: []
+  label: Partner / merchant signup; no published API pricing or self-serve key issuance
+  confidence: medium
+  source:
+    - https://www.groupon.com/developers/signup
+    - plans/groupon-plans-pricing.yml
+  generated: '2026-09-04'
+  method: searched
+apis:
+  - aid: groupon:groupon-api
+    name: Groupon API
+    description: >-
+      Groupon's own public API gateway. Live and Groupon-operated (responses carry
+      x-brand: groupon and Envoy/GCP upstream headers), but gated: every path,
+      including /v2/deals.json, /graphql and /.well-known/*, returns HTTP 401 with
+      {"error":{"httpCode":401,"message":"'client_id' is invalid"}} until a valid
+      client_id query parameter is supplied. Because the gateway returns the same
+      401 for paths that do not exist, its operation set could not be enumerated
+      anonymously and no OpenAPI has been derived for it.
+    humanURL: https://www.groupon.com/developers
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/groupon.png
+    baseURL: https://api.groupon.com
+    tags:
+      - Deals
+      - Local Commerce
+    properties:
+      - type: DeveloperPortal
+        url: https://www.groupon.com/developers
+      - type: Authentication
+        url: authentication/groupon-authentication.yml
+      - type: ErrorCatalog
+        url: errors/groupon-problem-types.yml
+  - aid: groupon:groupon-bookable-appointments-api
+    name: Groupon Bookable Appointments API
+    description: >-
+      REST contract for wellness, beauty and services booking systems. Groupon polls
+      the partner's system roughly every 60 minutes to cache merchants, services,
+      staff and availability, performs a real-time availability check before
+      checkout, creates the booking, propagates cancellations initiated on Groupon's
+      side, and updates booking status on redemption. Groupon publishes the OpenAPI
+      and CONSUMES the contract — the endpoints run on the partner's own host, so
+      there is no Groupon-hosted base URL for this API and none has been invented.
+    humanURL: https://www.groupon.com/developers-docs/bookable-appointments
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/groupon.png
+    tags:
+      - Bookings
+      - Appointments
+    properties:
+      - type: Documentation
+        url: https://www.groupon.com/developers-docs/bookable-appointments
+      - type: APIReference
+        url: https://www.groupon.com/developers/api-reference
+  - aid: groupon:groupon-tours-and-attractions-api
+    name: Groupon Tours and Attractions API
+    description: >-
+      REST contract connecting a tours, activities and attractions reservation
+      system to Groupon's point of sale, covering availability, reservation
+      creation and retrieval, cancellation and redemption. As with Bookable
+      Appointments, Groupon publishes the OpenAPI and consumes the contract; the
+      endpoints are hosted by the partner, so no Groupon base URL applies.
+    humanURL: https://www.groupon.com/developers-docs/tours-and-attractions
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/groupon.png
+    tags:
+      - Bookings
+      - Reservations
+      - Travel
+    properties:
+      - type: Documentation
+        url: https://www.groupon.com/developers-docs/tours-and-attractions
+      - type: APIReference
+        url: https://www.groupon.com/developers/api-reference
 common:
-  - type: DomainSecurity
-    url: security/groupon-domain-security.yml
+  - type: Website
+    url: https://www.groupon.com
+  - type: DeveloperPortal
+    url: https://www.groupon.com/developers
+  - type: Documentation
+    url: https://www.groupon.com/developers/docs
+  - type: APIReference
+    url: https://www.groupon.com/developers/api-reference
+  - type: SignUp
+    url: https://www.groupon.com/developers/signup
+  - type: Support
+    url: https://www.groupon.com/faq
+  - type: TermsOfService
+    url: https://www.groupon.com/legal/termsofservice
+  - type: PrivacyPolicy
+    url: https://privacy.groupon.com/
+  - type: Blog
+    url: https://medium.com/groupon-eng
+  - type: BlogRSS
+    url: https://medium.com/feed/groupon-eng
   - type: GitHubOrganization
     url: https://github.com/groupon
   - type: LinkedIn
     url: https://www.linkedin.com/company/groupon
-  - type: Website
-    url: https://www.groupon.com
-description: >-
-  Save up to 70% on 1,000s of local restaurants, shopping, events & more. Find great
-  deals on the best activities & things to do. Download the Groupon App today.
+  - type: LLMsTxt
+    url: llms/groupon-llms.txt
+  - type: ContentSignal
+    url: well-known/groupon-robots.txt
+  - type: Authentication
+    url: authentication/groupon-authentication.yml
+  - type: ErrorCatalog
+    url: errors/groupon-problem-types.yml
+  - type: Conventions
+    url: conventions/groupon-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/groupon-lifecycle.yml
+  - type: Packages
+    url: packages/groupon-packages.yml
+  - type: Plans
+    url: plans/groupon-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/groupon-rate-limits.yml
+  - type: Conformance
+    url: conformance/groupon-conformance.yml
+  - type: Security
+    url: security/groupon-vulnerability-disclosure.yml
+  - type: VulnerabilityDisclosure
+    url: security/groupon-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/groupon-domain-security.yml
+x-enrichment:
+  date: '2026-09-04'
+  status: enriched
+  artifacts_added: 13
+  pass: local-v3

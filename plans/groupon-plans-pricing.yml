@@ -1,0 +1,32 @@
+generated: '2026-09-04'
+method: searched
+provider: Groupon
+providerId: groupon
+plan_count: 0
+description: >-
+  Groupon publishes no priced API plans. The Groupon Developer Platform is a
+  partner/merchant integration programme, not a metered product: access is granted
+  by signing up as a partner at www.groupon.com/developers/signup and by the
+  commercial merchant agreement, and the money moves the other way — Groupon takes
+  a share of the deals sold, it does not sell API calls. No pricing page, tier
+  table, quota or overage schedule exists anywhere on the developer surface. The
+  one pricing-named developer page found, /developers-policies/groupon-independent-pricing,
+  is a MERCHANDISE pricing policy (who owns the configuration of a deal's price),
+  not API pricing. Recorded as plan_count 0 with the reason, per contract, rather
+  than omitting the file.
+plans: []
+sources:
+  - https://www.groupon.com/developers
+  - https://www.groupon.com/developers/signup
+  - https://www.groupon.com/developers-policies/groupon-independent-pricing
+gate: partner-signup
+evidence:
+  - url: https://www.groupon.com/developers
+    http_status: 403
+    fetched: '2026-09-04'
+    note: >-
+      Cloudflare managed bot challenge. The page is demonstrably served to browsers
+      and indexed by search engines; only automated clients are turned away.
+  - url: https://www.groupon.com/developers/signup
+    http_status: 403
+    fetched: '2026-09-04'
