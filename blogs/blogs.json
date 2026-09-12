@@ -1,0 +1,18 @@
+{
+  "repo": "groupon",
+  "feeds": [
+    {
+      "source": "https://privacy.groupon.com/",
+      "feed_url": "https://privacy.groupon.com/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://medium.com/groupon-eng",
+      "error": "HTTPError"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-09-06T19:17:18Z"
+}
