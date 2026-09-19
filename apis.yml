@@ -26,6 +26,16 @@ tags:
   - Marketplace
   - E-Commerce
   - Deals
+  - Booking
+  - Reservations
+  - Travel
+  - Retail
+tags_raw:
+  - Fortune 1000
+  - Local Commerce
+  - Marketplace
+  - E-Commerce
+  - Deals
   - Bookings
   - Reservations
   - Travel
@@ -96,6 +106,9 @@ apis:
     humanURL: https://www.groupon.com/developers-docs/bookable-appointments
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/groupon.png
     tags:
+      - Booking
+      - Appointments
+    tags_raw:
       - Bookings
       - Appointments
     properties:
@@ -114,6 +127,10 @@ apis:
     humanURL: https://www.groupon.com/developers-docs/tours-and-attractions
     image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/groupon.png
     tags:
+      - Booking
+      - Reservations
+      - Travel
+    tags_raw:
       - Bookings
       - Reservations
       - Travel
