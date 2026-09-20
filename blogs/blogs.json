@@ -10,12 +10,16 @@
     },
     {
       "source": "https://medium.com/groupon-eng",
+      "error": "HTTPError"
+    },
+    {
+      "source": "https://medium.com/feed/groupon-eng",
       "feed_url": "https://medium.com/feed/groupon-eng",
       "title": "",
       "saved": 0,
-      "method": "discovered"
+      "method": "feed"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-09-13T13:00:00Z"
+  "post_count": 10,
+  "fetched": "2026-09-19T20:17:39Z"
 }
