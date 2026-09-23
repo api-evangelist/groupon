@@ -1,7 +1,9 @@
 ---
 title: Groupon adds Amit Shah, forms board AI committee
 url: https://www.stocktitan.net/news/GRPN/groupon-launches-board-level-artificial-intelligence-committee-and-k5ofroarr4yj.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Groupon" press release artificial intelligence'
 position: 4
 source: serpapi-google

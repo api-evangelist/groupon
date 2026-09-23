@@ -1,7 +1,9 @@
 ---
 title: Groupon, Inc. - Home
 url: https://investor.groupon.com/home/default.aspx
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Groupon" press release artificial intelligence'
 position: 5
 source: serpapi-google
