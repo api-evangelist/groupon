@@ -64,12 +64,107 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-This is a repository for tracking the APIs, SDKs, and other developer resources for Groupon.
+Groupon is a local-commerce marketplace, founded in Chicago in 2008, where people discover and book discounted experiences, services, goods and travel — things to do, food and drink, beauty and spas, health and fitness, home and auto services, retail goods, getaways and retailer coupons. Its developer surface is a partner and merchant integration programme rather than a public product API: the Groupon Developer Platform publishes REST contracts for Bookable Appointments, Tours and Attractions, Goods Marketplace inventory and point-of-sale redemption, which partner booking and reservation systems implement so Groupon can poll availability, create reservations and signal redemptions. A separate Groupon-operated API gateway runs at api.groupon.com and requires a client_id on every request. The Groupon Partner Network affiliate reporting APIs were permanently closed on 2022-06-15.
 
-## APIs
+**Areas:** Fortune 1000 · Local Commerce · Marketplace · E-Commerce · Deals · Booking · Reservations · Travel · Retail
 
-No APIs have been documented yet. Check back for updates.
+## Groupon on APIs.io
 
-## Properties
+Everything profiled for Groupon is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/groupon/](https://apis.io/providers/groupon/)** — or go straight to one of the APIs or properties below.
+
+### APIs (3)
+
+- [Groupon API](https://apis.io/apis/groupon/groupon-api/) — Groupon's own public API gateway. Live and Groupon-operated (responses carry x-brand: groupon and Envoy/GCP upstream headers), but gated: every path,…
+- [Groupon Bookable Appointments API](https://apis.io/apis/groupon/groupon-bookable-appointments-api/) — REST contract for wellness, beauty and services booking systems. Groupon polls the partner's system roughly every 60 minutes to cache merchants, services,…
+- [Groupon Tours and Attractions API](https://apis.io/apis/groupon/groupon-tours-and-attractions-api/) — REST contract connecting a tours, activities and attractions reservation system to Groupon's point of sale, covering availability, reservation creation and…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Groupon Authentication](https://apis.io/security/groupon/groupon-authentication/)
+- [Groupon Domain Security](https://apis.io/security/groupon/groupon-domain-security/)
+- [Groupon Vulnerability Disclosure](https://apis.io/security/groupon/groupon-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Groupon Plans Pricing](https://apis.io/plans/groupon/groupon-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Groupon Rate Limits](https://apis.io/rate-limits/groupon/groupon-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.groupon.com)
+- [Documentation](https://www.groupon.com/developers/docs)
+- [API reference](https://www.groupon.com/developers/api-reference)
+- [Sign up](https://www.groupon.com/developers/signup)
+- [Support](https://www.groupon.com/faq)
+- [Blog](https://medium.com/groupon-eng)
+- [Terms of service](https://www.groupon.com/legal/termsofservice)
+- [Privacy policy](https://privacy.groupon.com/)
+- [GitHub](https://github.com/groupon)
+
+## API Evangelist rating
+
+**Kin Score 26.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 45.2 |
+| Access clarity | 23.7 |
+
+**Agent readiness 10.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | yes |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 26.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/groupon/](https://apis.io/providers/groupon/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Groupon: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/groupon/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
