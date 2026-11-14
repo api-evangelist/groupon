@@ -11,6 +11,12 @@ artifacts:
   conventions/groupon-conventions.yml:
     method: unknown
     evidence: no authorship recorded
+  data-license/groupon-data-license.yml:
+    method: harvested
+    evidence: declared in the artifact
+  eligibility/groupon-eligibility.yml:
+    method: harvested
+    evidence: declared in the artifact
   errors/groupon-problem-types.yml:
     method: unknown
     evidence: no authorship recorded
@@ -23,6 +29,9 @@ artifacts:
   heartbeat/2026-11-06.yml:
     method: unknown
     evidence: no authorship recorded
+  heartbeat/2026-11-13.yml:
+    method: unknown
+    evidence: no authorship recorded
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -32,7 +41,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -98,6 +107,9 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/groupon-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
@@ -128,6 +140,9 @@ artifacts:
   press/2026-05-25-05-groupon-inc-home.md:
     method: unknown
     evidence: no authorship recorded
+  privacy/groupon-privacy-policy.yml:
+    method: harvested
+    evidence: declared in the artifact
   rate-limits/groupon-rate-limits.yml:
     method: unknown
     evidence: no authorship recorded
@@ -151,6 +166,9 @@ artifacts:
     evidence: no authorship recorded
   security/groupon-vulnerability-disclosure.yml:
     method: searched
+    evidence: declared in the artifact
+  terms/groupon-terms-of-service.yml:
+    method: harvested
     evidence: declared in the artifact
   well-known/groupon-robots.txt:
     method: unknown
